@@ -1,0 +1,32 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="container">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+                {% if existing_user %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>User already exists, please inform a different email address!</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+                <form action="{{url_for('signup')}}" method="post">
+                    <div class="form-group">
+                        <h2>Sign Up</h2>
+                        <label for="full_name">Full Name</label>
+                        <input type="text" class="form-control" id="full_name" name="full_name" aria-describedby="full_name" placeholder="Ex: John Snow" required>
+                        <label for="username">Email <small>(Your email address will be used as your username.)</small></label>
+                        <input type="email" class="form-control" id="username" name="username" aria-describedby="username" placeholder="Ex: john.snow@got.com" required>
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" aria-describedby="password" size="8" required>
+                    </div>
+                    <button id="submit_button" name="submit_button" value="Signup" type="submit" class="btn btn-primary">Sign Up</button>
+                    <button id="submit_button" name="submit_button" value="Cancel" type="submit" class="btn btn-primary" formnovalidate>Cancel</button>
+                </form>
+        </div>
+        <div class="col-sm"></div>
+</div>
+{% endblock %}

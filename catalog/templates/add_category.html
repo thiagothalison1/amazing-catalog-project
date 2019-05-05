@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="container">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+                <form action="{{url_for('create_category')}}" method="post">
+                    <div class="form-group">
+                        <label for="new_category_name">Category Name</label>
+                        <input type="text" class="form-control" id="new_category_name" name="new_category_name" aria-describedby="categoryNameHelp" placeholder="Enter new category name">
+                        <label for="new_category_desc">Category Description</label>
+                        <input type="text" class="form-control" id="new_category_desc" name="new_category_desc" aria-describedby="categoryDescHelp" placeholder="Enter new category description">
+                        <small id="emailHelp" class="form-text text-muted">The new created category will be available for all users.</small>
+                    </div>
+                    <button id="submit_button" name="submit_button" value="Create" type="submit" class="btn btn-primary">Create</button>
+                    <button id="submit_button" name="submit_button" value="Cancel" type="submit" class="btn btn-primary">Cancel</button>
+                </form>
+        </div>
+        <div class="col-sm"></div>
+</div>
+{% endblock %}

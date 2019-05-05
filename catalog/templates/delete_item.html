@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="container">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+                <form action="{{url_for('delete_item', category_id = category.id, item_id = item.id)}}" method="post">
+                    <div class="form-group">
+                        <h2>Are you sure you want to delete the {{item.name}} item?</h2>
+                    </div>
+                    <button id="submit_button" name="submit_button" value="Delete" type="submit" class="btn btn-primary">Delete</button>
+                    <button id="submit_button" name="submit_button" value="Cancel" type="submit" class="btn btn-primary">Cancel</button>
+                </form>
+        </div>
+        <div class="col-sm"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+          <div class="col-sm">
+              <div class="list-group">
+                <h2>Categories {% if user_session['username'] %} <a href="{{url_for('create_category')}}"><img class="icon add-icon" src="{{url_for('static', filename='add_icon.png')}}"></a>{% endif %}</h2>
+                {% for category in categories %}
+                  <a href="{{url_for('showItems', category_id = category.id)}}" class="list-group-item list-group-item-action">{{category.name}}</a>
+                {% endfor %}
+              </div>
+          </div>
+          <div class="col-sm">
+              <div class="list-group">
+                <h2>{{selected_category.name}} Items {% if user_session['username'] %} <a href="{{url_for('create_item', category_id = selected_category.id)}}"><img class="icon add-icon" src="{{url_for('static', filename='add_icon.png')}}"></a> {% endif %} </h2>
+                {% for item in items %}
+                  <a href="{{url_for('showItem', category_id = item.category_id, item_id = item.id)}}" class="list-group-item list-group-item-action">{{item.name}}</a>
+                {% endfor %}
+              </div>
+          </div>
+          <div class="col-sm">
+          </div>
+        </div>
+     </div>
+{% endblock %}
