@@ -1,12 +1,18 @@
-from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from entities import Base, Category, Item, User
 from sqlalchemy import desc
 
-engine = create_engine('sqlite:///database/catalog.db')
-Base.metadata.bind = engine
-DBSession = sessionmaker(bind=engine)
-session = DBSession()
+# Global variable that holds the session with the database.
+# It is used for CRUD operations on the database.
+session = None
+
+
+# Database query session inititalization
+def init(engine):
+    global session
+    Base.metadata.bind = engine
+    DBSession = sessionmaker(bind=engine)
+    session = DBSession()
 
 
 def get_user(username):
@@ -14,6 +20,10 @@ def get_user(username):
     return user
 
 
+# There are two ways for creating a new user on the system.
+# Google profile information: When the user Sign Up with google credentials.
+# System SIgn Up: User inserts some information on a form.
+# Note: Today the picture url is supported only for the google sign up.
 def create_user(user_info, is_sign_up):
     if is_sign_up:
         new_user = User(name=user_info['name'], username=user_info['username'])
