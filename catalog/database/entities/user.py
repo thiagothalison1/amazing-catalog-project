@@ -15,7 +15,7 @@ class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
     username = Column(String(250), index=True)
-    password_hash = Column(String(64))
+    password_hash = Column(String(250))
     name = Column(String(250), nullable=False)
     picture = Column(String(250))
 
